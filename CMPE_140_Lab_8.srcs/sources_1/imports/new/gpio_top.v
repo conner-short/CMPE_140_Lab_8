@@ -19,8 +19,8 @@ module gpio_top(
     gpio_addr_dec addr_dec(.addr(addr), .we(we), .we1(we1), .we2(we2), .rd_sel(rd_sel));
     
     // Output registers
-    dreg reg_gpo1(.clk(clk), .reset(reset), .load(we1), .d(wd), .q(gpo1));
-    dreg reg_gpo2(.clk(clk), .reset(reset), .load(we2), .d(wd), .q(gpo2));
+    factorial_dreg reg_gpo1(.clk(clk), .reset(reset), .load(we1), .d(wd), .q(gpo1));
+    factorial_dreg reg_gpo2(.clk(clk), .reset(reset), .load(we2), .d(wd), .q(gpo2));
     
     // Read data logic
     always@(*)

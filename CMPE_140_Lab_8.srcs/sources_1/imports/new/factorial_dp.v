@@ -31,5 +31,5 @@ module factorial_dp #(
     mux #(.WIDTH(Q_WIDTH)) register_d_mux (.a('d1), .b(multiplier_q), .sel(register_d_mux_sel), .q(register_d));
     mux #(.WIDTH(Q_WIDTH)) output_mux (.a('d0), .b(register_q), .sel(output_en), .q(q));
     
-    dreg #(.WIDTH(Q_WIDTH)) register (.clk(clk), .reset(reset), .load(register_load), .d(register_d), .q(register_q));
+    factorial_dreg #(.WIDTH(Q_WIDTH)) register (.clk(clk), .reset(reset), .load(register_load), .d(register_d), .q(register_q));
 endmodule
