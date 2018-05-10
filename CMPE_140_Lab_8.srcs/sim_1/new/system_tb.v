@@ -23,7 +23,7 @@ module system_tb();
     begin
         gpi1 = 32'h1C;
         tick_reset;
-        while(pc != 32'h4C) tick_clk;
+        while(pc != 32'hA8) tick_clk;
         $finish;
     end
 endmodule

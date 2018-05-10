@@ -2,7 +2,7 @@ module imem
 (input [5:0] a, output [31:0] y);
     reg [31:0] rom [0:63];
     initial begin
-        $readmemh ("memfile.dat", rom);
+        $readmemh ("memfile_noop.dat", rom);
     end
     assign y = rom[a];
 endmodule

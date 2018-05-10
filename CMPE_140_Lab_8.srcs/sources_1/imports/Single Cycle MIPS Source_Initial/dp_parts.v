@@ -79,7 +79,10 @@ module regfile
     end
     always @ (posedge clk)
     begin
-        if (we) rf[wa] <= wd;
+        if (we)
+        begin
+            rf[wa] <= (wa == 5'h0) ? 32'h0 : wd;
+        end
     end
     assign rd1 = (ra1 == 0) ? 0 : rf[ra1];
     assign rd2 = (ra2 == 0) ? 0 : rf[ra2];
