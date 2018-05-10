@@ -3,9 +3,27 @@ module mux2 #(parameter wide = 8)
     assign y = (sel) ? b : a;
 endmodule
 
+module mux4 #(parameter wide = 8)
+(input [1:0] sel, [wide-1:0] a, b, c, d, output reg [wide-1:0] y);
+    always @ (sel, a, b, c, d)
+    begin  
+        case (sel)
+            2'b00 : y = a;
+            2'b01 : y = b;
+            2'b10 : y = c;
+            2'b11 : y = d;
+        endcase
+    end
+endmodule
+
 module adder
 (input [31:0] a, b, output [31:0] y);
     assign y = a + b;
+endmodule
+
+module mult
+(input [31:0] a, b, output [63:0] y);
+    assign y = a * b;
 endmodule
 
 module signext
@@ -36,6 +54,21 @@ module dreg
         else     q <= d;
     end
 endmodule
+
+module dreg2 #(parameter WIDTH = 32) 
+(
+      input wire clk,
+      input wire en,
+      input wire [WIDTH - 1 : 0] d,
+      output reg [WIDTH - 1 : 0] q
+ );
+     always@(posedge clk)
+     begin
+        if(en)    q <= d;
+         else     q <= q;
+     end
+ endmodule
+
 
 module regfile
 (input clk, we, [4:0] ra1, ra2, ra3, wa, [31:0] wd, output [31:0] rd1, rd2, rd3);
